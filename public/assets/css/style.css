@@ -1,0 +1,501 @@
+:root{
+    --highlight : #3DA9FC;
+    --paragraph : #5F6C7B;
+    --headline : #094067;
+    --secondary : #90B4CE;
+    --subsecondary : #D8EEFE;
+}
+
+* {
+    font-family:'Poppins',sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+    border: none;
+    text-decoration: none;
+}
+body{
+    overflow-x: hidden;
+}
+.navbar-nav a{
+    color: black;
+}
+.navbar-nav a:hover{
+    color: var(--headline) !important;
+    text-decoration: underline;
+}
+.container-hero{
+    background-image:linear-gradient(to left bottom,#A9A9A9,#DDDDDD ,white 80%);
+    margin-top:-75px;
+}
+.active{
+    font-weight: 900;
+    color: var(--headline) !important;
+}
+.hero{
+    padding-top:75px;
+}
+
+@keyframes floatdownup {
+	0% {
+		transform: translatey(0px);
+	}
+	50% {
+		transform: translatey(-20px);
+	}
+	100% {		
+		transform: translatey(0px);
+	}
+}
+@keyframes floatupdown {
+	0% {
+		transform: translatey(-20px);
+	}
+	50% {
+		transform: translatey(0px);
+	}
+	100% {		
+		transform: translatey(-20px);
+	}
+}
+@keyframes floatmodel {
+	0% {
+		transform: translatey(0px);
+	}
+	50% {
+		transform: translatey(-10px);
+	}
+	100% {		
+		transform: translatey(0px);
+	}
+}
+
+
+.heroteks{
+    margin-top:150px;
+}
+.heroteks h5{
+    color: var(--paragraph);
+    font-weight: 600;
+    font-size:1.5rem;
+}
+.heroteks h1{
+    color: var(--headline);
+    font-weight: 700;
+    font-size: 3rem;
+}
+.heroteks p{
+    color: var(--paragraph);
+    font-weight: 400;
+    font-size: 1.125rem;
+}
+
+
+.btn{
+    margin-top:10px;
+    background-color:#3DA9FC !important;
+    font-size:1.125rem;
+    color:white;
+    font-weight: bolder;
+    padding:10px 50px;
+}
+
+.heromodels{
+    position: relative;
+}
+.models{
+    width:260px;
+    height:600px;
+    margin-left:120px;
+    transform: translatey(-10px);
+	animation: floatupdown 6s ease-in-out infinite;
+}
+.checkcross{
+    width:100px;
+    height:130px;
+    position:absolute;
+    top:45%;
+    right:-8%;
+	transform: translatey(0px);
+	animation: floatdownup 6s ease-in-out infinite;
+}
+.ui{
+    width:140px;
+    height:120px;
+    position:absolute;
+    top: 0%;
+    left: 10%;
+    transform: translatey(0px);
+	animation: floatdownup 6s ease-in-out infinite;
+}
+.help{
+    width:200px;
+    height:200px;
+    position:absolute;
+    bottom: 0%;
+    left:20%;
+    transform: translatey(0px);
+	animation: floatdownup 6s ease-in-out infinite;
+}
+
+.report{
+    background-color: var(--subsecondary);
+
+}
+.report h1{
+    color: var(--headline);
+    font-weight: 700;
+    font-size: 3rem;
+}
+
+.form-label {
+    color: var(--paragraph);
+    font-weight: 400;
+    font-size: 1.125rem;
+}
+
+
+.box{
+    border: var(--headline) solid 2px;
+}
+
+.submit{
+    padding:5px 30px;
+    background-color: white !important;
+    color: var(--headline);
+    font-weight: 700;
+    border: var(--headline) solid 2px;
+}
+.submit:hover{
+    border: var(--headline) solid 2px;
+    background-color: var(--highlight) !important;
+    color: white;
+}
+
+.modelreport{
+    width:500px;
+    height:600px;
+}
+
+.footer{
+    color:var(--headline);
+    font-weight: bold;
+}
+
+/* ------------------------------- HISTORY PAGE-------------------------------- */
+.container-history{
+    background-color: var(--subsecondary);
+    min-height:100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+h1{
+    color: var(--headline);
+    font-weight: 700;
+    font-size: 3rem;
+}
+
+.accordions{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.accordion-item{
+    background-color: white;
+    border-radius:15px !important;
+    border-radius: 50px;
+}
+.accordion-header{
+    padding: 20px;
+    border-radius:15px;
+    height:100%;
+    width:100%;
+    background-color: var(--highlight);
+}
+.header-content{
+    width:100%;
+    height:100%;
+    font-weight:600 !important;
+    color:black;
+    text-align: center;
+    font-size: 2rem;
+}
+
+.accordion-body{
+    padding:20px;
+    color: var(--paragraph);
+    font-weight: 400;
+    font-size: 1.125rem;
+}
+.loadingContainer {
+    width:100px;
+    position:absolute;
+    right:-5%;
+    bottom:28%; 
+}
+.status{
+    width:100px;
+    position:absolute;
+    right:-7%;
+    bottom:5%; 
+}
+.status img{
+    height: 45px;
+    width: 45px;
+}
+.loadingContainer div {
+    height:15px;
+    width:15px;
+    border-radius:50%;
+    background: black;
+    float:left;
+    margin:0 3px;
+    background:white;
+}
+.loadingContainer .ball1 {
+    z-index:1;
+    animation: bounce 3s infinite ease-in-out;
+}
+.loadingContainer .ball2 {
+    animation: bounce 3s infinite ease-in-out;
+    animation-delay: 0.5s;
+}
+.loadingContainer .ball3 {
+    animation: bounce 3s infinite ease-in-out;
+    animation-delay: 1s;
+}
+
+@keyframes bounce {
+    0%,15% {transform: translate(0,0);}
+    50% {transform: translate(0,-20px);}
+    85%, 100% {transform: translate(0,0);};
+}
+
+/* ------------------------------------ ABOUT ---------------------------------- */
+.container-about{
+    background-image:linear-gradient(to left bottom,#A9A9A9,#DDDDDD ,white 80%);
+    margin-top:-75px;
+    height:100vh;
+}
+.container-about{
+    padding-top:150px;
+}
+
+/* Styling laptop */
+@media(max-width:1200px){
+    .logo-about{
+        width:500px;
+        height: 180px;
+    }
+}
+
+/* Styling Notebook */
+@media (max-width:992px){
+    .heroteks{
+        margin-top:70px;
+    }
+    html {
+        font-size:80%;
+    }
+    .models{
+        width:260px;
+        height:600px;
+        margin-left:0;
+    }
+    .checkcross{
+        width:80px;
+        height:110px;
+        position:absolute;
+        top:35%;
+        right:0%;
+        transform: translatey(0px);
+        animation: floatupdown 6s ease-in-out infinite;
+    }
+    .ui{
+        width:100px;
+        height:80px;
+        position:absolute;
+        top: 15%;
+        left: 0%;
+        transform: translatey(0px);
+        animation: floatdownup 6s ease-in-out infinite;
+    }
+    .help{
+        width:150px;
+        height:150px;
+        position:absolute;
+        bottom: 8%;
+        left:8%;
+        transform: translatey(0px);
+        animation: floatdownup 6s ease-in-out infinite;
+    }
+    .separator{
+        top:95vh;
+    }
+    .modelreport{
+        width:400px;
+        height:450px;
+    }
+    /* ------------------------------------- HISTORY PAGE------------------------------- */
+    
+    .loadingContainer {
+        right:-15%;  
+    }
+    .loadingContainer div {
+        height:10px;
+        width:10px;
+    }
+    .status{
+        right:-16%;
+    }
+    .status img{
+        height: 35px;
+        width: 35px;
+    }
+
+    /* -------------------------------- ABOUT PAGE ----------------------------------- */
+    .logo-about{
+        width:400px;
+        height: 180px;
+    }
+}
+
+/* Styling Tablet */
+@media (max-width: 768px) {
+    html{
+        font-size: 65%;
+    }
+   .heroteks{
+    margin-top: 50px;
+   }
+   .navbar-brand img{
+    width:50%;
+    height:50%;
+    }
+   
+   .btn{
+    padding:5px 30px;
+    }
+    .heromodels{
+        position: relative;
+    }
+    .models{
+        width:230px;
+        height:540px;
+    }
+    .checkcross{
+        width:80px;
+        height:110px;
+        position:absolute;
+        top:35%;
+        right:-3%;
+        transform: translatey(0px);
+        animation: floatupdown 6s ease-in-out infinite;
+    }
+    .ui{
+        width:80px;
+        height:60px;
+        position:absolute;
+        top: 8%;
+        left: 0%;
+        transform: translatey(0px);
+        animation: floatdownup 6s ease-in-out infinite;
+    }
+    .help{
+        width:120px;
+        height:120px;
+        position:absolute;
+        bottom: 10%;
+        left:6%;
+        transform: translatey(0px);
+        animation: floatdownup 6s ease-in-out infinite;
+    }
+    .separator{
+        top:100vh;
+    }
+    /* ------------------------------------- HISTORY PAGE------------------------------- */
+    .loadingContainer {
+        right:-20%;  
+    }
+    .loadingContainer div {
+        height:8px;
+        width:8px;
+    }
+    .status{
+        right:-22%;
+    }
+    .status img{
+        height: 30px;
+        width: 30px;
+    }
+}
+  
+  /* Styling Ponsel */
+  @media (max-width: 576px) {
+    html{
+        font-size:50%;
+    }
+    .heroteks{
+        margin-top: 30px;
+    }
+    .navbar-brand img{
+        width:50%;
+        height:50%;
+    }
+    
+    .btn{
+        padding:5px 25px;
+    }
+
+    .models{
+        width:180px;
+        height:400px;
+    }
+    .checkcross{
+        width:50px;
+        height:70px;
+        position:absolute;
+        top:50%;
+        right:18%;
+        transform: translatey(0px);
+        animation: floatupdown 6s ease-in-out infinite;
+    }
+    .ui{
+        width:60px;
+        height:50px;
+        position:absolute;
+        top: 10%;
+        left: 15%;
+        transform: translatey(0px);
+        animation: floatdownup 6s ease-in-out infinite;
+    }
+    .help{
+        width:100px;
+        height:100px;
+        position:absolute;
+        bottom: 15%;
+        left:20%;
+        transform: translatey(0px);
+        animation: floatdownup 6s ease-in-out infinite;
+    }
+    .separator{
+        top:101vh;
+    }
+    
+    /* ------------------------------------- HISTORY PAGE------------------------------- */
+    .loadingContainer {
+        right:-25%;  
+    }
+    .status{
+        right:-27%;
+    }
+    .status img{
+        height: 30px;
+        width: 30px;
+    }
+    /* ----------------------------------- ABOUT PAGE ------------------------------------ */
+  }
