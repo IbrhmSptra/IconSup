@@ -57,7 +57,7 @@
                                 <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#2" aria-expanded="true" aria-controls="2">
                                     <div class="header-content">LSP+</div>
                                     <div class="status">
-                                        <img src="/assets/img/remove.svg" alt="" />
+                                        <img src="/assets/User/img/remove.svg" alt="" />
                                     </div>
                                 </button>
                             </div>
@@ -97,7 +97,7 @@
                                 <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#3" aria-expanded="true" aria-controls="3">
                                     <div class="header-content">PLN Marketplace</div>
                                     <div class="status">
-                                        <img src="/assets/img/checklist.svg" alt="" />
+                                        <img src="/assets/User/img/checklist.svg" alt="" />
                                     </div>
                                 </button>
                             </div>

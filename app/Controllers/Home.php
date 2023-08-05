@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Controllers\User;
+namespace App\Controllers;
 
 use App\Controllers\BaseController;
 
-class History extends BaseController
+class Home extends BaseController
 {
-    public function index()
+    public function index(): string
     {
         if (in_groups('Admin')) {
             $data = [
@@ -15,9 +15,9 @@ class History extends BaseController
             return view('/admin/content/home', $data);
         } else {
             $data = [
-                'title' => 'IconSup-History'
+                'title' => 'IconSup'
             ];
-            return view('/user/content/history', $data);
+            return view('/user/content/home', $data);
         }
     }
 }

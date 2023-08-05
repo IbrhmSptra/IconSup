@@ -25,7 +25,7 @@
             <div class="col-md-7" data-aos="fade-left">
                 <div class="row">
                     <div class="col text-end">
-                        <img class="logo-about" src="/assets/img/logoAbout.svg" alt="logo-about" />
+                        <img class="logo-about" src="/assets/User/img/logoAbout.svg" alt="logo-about" />
                     </div>
                 </div>
             </div>

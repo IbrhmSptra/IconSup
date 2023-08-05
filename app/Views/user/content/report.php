@@ -29,7 +29,7 @@
                     </div>
                 </div>
                 <div class="col-md-6 col-12 text-center text-md-end">
-                    <img data-aos-duration="1000" data-aos="flip-right" class="modelreport" src="/assets/img/modelreport.png" alt="models" />
+                    <img data-aos-duration="1000" data-aos="flip-right" class="modelreport" src="/assets/User/img/modelreport.png" alt="models" />
                 </div>
             </div>
         </div>
