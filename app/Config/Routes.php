@@ -32,6 +32,7 @@ $routes->set404Override();
 $routes->get('/', 'Home::index');
 $routes->get('/history', 'User\History::index');
 $routes->get('/about', 'User\About::index');
+$routes->post('/submit', 'User\Report::create');
 
 
 /*

@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
+use App\Models\ServicesModel;
 
 class Home extends BaseController
 {
@@ -13,9 +14,16 @@ class Home extends BaseController
                 'title' => 'IconSup'
             ];
             return view('/admin/content/home', $data);
-        } else {
+        }
+        //---------------------------------------
+        //             HOME FOR USER
+        //---------------------------------------
+        else {
+            $servicesmodel = new ServicesModel();
+            $services = $servicesmodel->findAll();
             $data = [
-                'title' => 'IconSup'
+                'title' => 'IconSup',
+                'services' => $services,
             ];
             return view('/user/content/home', $data);
         }
