@@ -33,7 +33,9 @@ $routes->get('/', 'Home::index');
 $routes->get('/history', 'User\History::index');
 $routes->get('/about', 'User\About::index');
 $routes->post('/submit', 'User\Report::create');
-
+$routes->get('/reportspending', 'Admin\Reports::reportsPending');
+$routes->get('/solved/(:segment)', 'Admin\Reports::updateSolved/$1');
+$routes->get('/declined/(:segment)', 'Admin\Reports::updateDeclined/$1');
 
 /*
  * --------------------------------------------------------------------

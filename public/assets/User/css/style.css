@@ -5,6 +5,10 @@
     --secondary : #90B4CE;
     --subsecondary : #D8EEFE;
 }
+.colored-toast.swal2-icon-success {
+  background-color: var(--highlight) !important;
+  color: white !important;
+}
 
 * {
     font-family:'Poppins',sans-serif;

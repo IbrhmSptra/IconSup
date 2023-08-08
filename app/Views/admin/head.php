@@ -12,3 +12,5 @@
 
 <!-- Custom styles for this template-->
 <link href="/assets/Admin/css/sb-admin-2.min.css" rel="stylesheet">
+<!-- Custom css-->
+<link href="/assets/Admin/css/style.css" rel="stylesheet">
