@@ -7,7 +7,11 @@
       <div class="row">
         <div class="col-md-6 col-12">
           <div class="heroteks text-md-start text-center">
-            <h5>Halo, Selamat Datang...</h5>
+            <h5>Halo, Selamat Datang
+              <?php if (isset(user()->username)) {
+                echo user()->username;
+              } ?>
+            </h5>
             <h1>
               Request bantuan dan <br />
               laporkan kendalamu

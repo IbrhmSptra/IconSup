@@ -34,8 +34,13 @@ $routes->get('/history', 'User\History::index');
 $routes->get('/about', 'User\About::index');
 $routes->post('/submit', 'User\Report::create');
 $routes->get('/reportspending', 'Admin\Reports::reportsPending');
+$routes->post('/reportspending', 'Admin\Reports::reportsPending');
 $routes->get('/solved/(:segment)', 'Admin\Reports::updateSolved/$1');
 $routes->get('/declined/(:segment)', 'Admin\Reports::updateDeclined/$1');
+$routes->get('/reportssolved', 'Admin\Reports::reportsSolved');
+$routes->post('/reportssolved', 'Admin\Reports::reportsSolved');
+$routes->get('/reportsdeclined', 'Admin\Reports::reportsDeclined');
+$routes->post('/reportsdeclined', 'Admin\Reports::reportsDeclined');
 
 /*
  * --------------------------------------------------------------------

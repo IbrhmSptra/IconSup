@@ -8,6 +8,22 @@
         <h1 class="h3 mb-0 text-gray-800">Reports Pending</h1>
     </div>
 
+    <!-- Search -->
+    <div class="row">
+        <div class="col-4">
+            <form action="/reportspending" method="post">
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="Keyword" name="search">
+                    <button class="btn btn-outline-primary" type="submit" name="submit">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+                        </svg>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
     <!-- Table -->
     <table class="table table-hover">
         <thead>
@@ -23,11 +39,10 @@
             </tr>
         </thead>
         <tbody class="table-group-divider">
-            <?php $no = 0 ?>
+            <?php $no = 1 + (5 * ($currentpage - 1)) ?>
             <?php foreach ($reports as $row) : ?>
-                <?php $no++ ?>
                 <tr class="text-center">
-                    <th scope="row"><?= $no ?></th>
+                    <th scope="row"><?= $no++ ?></th>
                     <td><?= $row->user_id; ?></td>
                     <td><?= $row->username; ?></td>
                     <td><?= $row->pesan; ?></td>
@@ -52,6 +67,17 @@
             <?php endforeach ?>
         </tbody>
     </table>
+
+    <!-- Kalau total reports lebih dari 10 buatkan pagination -->
+    <?php if ($totalReports > 10) : ?>
+        <div class="pagercontainer">
+            <div>
+                <?= $pager ?>
+            </div>
+        </div>
+    <?php endif; ?>
+
+    <!-- kalau reports kosong tampilkan pesan tidak ada reports -->
     <?php if ($reports == null) : ?>
         <div class="row mt-5">
             <div class="col text-center">

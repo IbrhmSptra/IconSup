@@ -7,22 +7,31 @@ use App\Models\ReportsModel;
 
 class Reports extends BaseController
 {
+
+    //------------------------------------- Pending Reports ---------------------------------------------------
     public function reportsPending()
     {
-        $db = \Config\Database::connect();
-        $builder = $db->table('reports');
-        $builder->select('users.id as user_id, users.username, services.name as service_name, reports.id, reports.status, reports.pesan, reports.urgency, reports.created_at');
-        $builder->join('users', 'users.id = reports.id_user');
-        $builder->join('services', 'services.id = reports.id_services');
-        $builder->where('reports.urgency IS NOT NULL AND reports.status IS NULL');
-        $builder->orderBy('(CASE reports.urgency WHEN "High" THEN 1 WHEN "Medium" THEN 2 ELSE 3 END)', 'ASC');
-        $builder->orderBy('reports.created_at', 'ASC');
-        $query = $builder->get();
+        $reportsModel = new ReportsModel();
+        //pagination
+        $perPage = 10;
+        //dapatkan var get dari page untuk penomoran table didalam pagination
+        $currentpage = $this->request->getVar('page') ? $this->request->getVar('page') : 1; //klo page ada angkanya maka isi dengan angka tersebut klo ga ada berarti pagenya 1
+        //search logic
+        $keyword = $this->request->getVar('search');
+        if ($keyword) {
+            $reportData = $reportsModel->reportpendingSearch($perPage, $keyword);
+        } else {
+            $reportData = $reportsModel->reportpending($perPage);
+        }
+
         $data = [
-            "reports" => $query->getResult()
+            'reports' => $reportData['data'],
+            'pager' => $reportData['pager'],
+            'currentpage' => $currentpage,
+            'totalReports' => $reportData['totalData']
         ];
 
-        return view("/admin/content/reportspending", $data);
+        return view('/admin/content/reportspending', $data);
     }
 
     public function updateSolved($id = null)
@@ -47,5 +56,62 @@ class Reports extends BaseController
         $reportmodel->update($id, $payload);
         $session->setFlashdata('declined', 'berhasil');
         return redirect()->to('/reportspending');
+    }
+
+
+
+    //------------------------------------- Resolved Reports ---------------------------------------------------
+    public function reportsSolved()
+    {
+        $reportsModel = new ReportsModel();
+        //pagination
+        $perPage = 10;
+        //dapatkan var get dari page untuk penomoran table
+        $currentpage = $this->request->getVar('page') ? $this->request->getVar('page') : 1; //klo page ada angkanya maka isi dengan angka tersebut klo ga ada berarti pagenya 1
+        //search logic
+        $keyword = $this->request->getVar('search');
+        if ($keyword) {
+            $reportData = $reportsModel->reportsolvedSearch($perPage, $keyword);
+        } else {
+            $reportData = $reportsModel->reportsolved($perPage);
+        }
+        $data = [
+            'reports' => $reportData['data'],
+            'pager' => $reportData['pager'],
+            'currentpage' => $currentpage,
+            'totalReports' => $reportData['totalData']
+        ];
+
+        return view('/admin/content/reportssolved', $data);
+    }
+
+
+
+
+    //------------------------------------- Declined Reports ---------------------------------------------------
+    public function reportsDeclined()
+    {
+        $reportsModel = new ReportsModel();
+        //pagination
+        $perPage = 10;
+        //dapatkan var get dari page untuk penomoran table
+        $currentpage = $this->request->getVar('page') ? $this->request->getVar('page') : 1; //klo page ada angkanya maka isi dengan angka tersebut klo ga ada berarti pagenya 1
+
+        //search logic
+        $keyword = $this->request->getVar('search'); //dapatkan variable keyword search dari method post
+        if ($keyword) {
+            $reportData = $reportsModel->reportdeclinedSearch($perPage, $keyword);
+        } else {
+            $reportData = $reportsModel->reportdeclined($perPage);
+        }
+
+        $data = [
+            'reports' => $reportData['data'],
+            'pager' => $reportData['pager'],
+            'currentpage' => $currentpage,
+            'totalReports' => $reportData['totalData']
+        ];
+
+        return view('/admin/content/reportsdeclined', $data);
     }
 }

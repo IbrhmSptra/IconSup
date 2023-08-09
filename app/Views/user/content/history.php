@@ -12,128 +12,95 @@
             <div class="row justify-content-center">
                 <div class="col-7 text-center">
                     <div class="accordions">
-                        <!-- Accordion Item-->
-                        <div class="accordion-item">
-                            <div class="accordion-header">
-                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#1" aria-expanded="false" aria-controls="1">
-                                    <div class="header-content">Airlis</div>
-                                    <div class="loadingContainer">
-                                        <div class="ball1"></div>
-                                        <div class="ball2"></div>
-                                        <div class="ball3"></div>
-                                    </div>
-                                </button>
-                            </div>
-                            <div id="1" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-                                <div class="accordion-body">
-                                    <div class="row justify-content-center mt-4">
-                                        <div class="col-6 text-center">
-                                            Ada Kendala pada jaringan AirLis databasenya ada
-                                            beberapa yang tidak bisa di akses
-                                        </div>
-                                        <div class="row justify-content-between align-items-center mt-4">
-                                            <div class="col-4">
-                                                <div class="row">
-                                                    <div class="col text-start">Report On</div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col text-start">23/6/2022</div>
-                                                </div>
+                        <?php $i = 1 ?>
+                        <?php foreach ($history as $row) : ?>
+                            <!-- Accordion Item-->
+                            <div class="accordion-item">
+                                <div class="accordion-header">
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#<?= $i ?>" aria-expanded="false" aria-controls="<?= $i ?>">
+                                        <div class="header-content"><?= $row->service_name; ?></div>
+                                        <?php if ($row->status == null) : ?>
+                                            <div class="loadingContainer">
+                                                <div class="ball1"></div>
+                                                <div class="ball2"></div>
+                                                <div class="ball3"></div>
                                             </div>
-                                            <div class="col-4">
-                                                <div class="row">
-                                                    <div class="col text-end">On Progress..</div>
+                                        <?php elseif ($row->status == "Solved") : ?>
+                                            <div class="status">
+                                                <img src="/assets/User/img/checklist.svg" alt="" />
+                                            </div>
+                                        <?php else : ?>
+                                            <div class="status">
+                                                <img src="/assets/User/img/remove.svg" alt="" />
+                                            </div>
+                                        <?php endif; ?>
+                                    </button>
+                                </div>
+                                <div id="<?= $i++ ?>" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                                    <div class="accordion-body">
+                                        <div class="row justify-content-center mt-4">
+                                            <div class="col-6 text-center">
+                                                <?= $row->pesan; ?>
+                                            </div>
+                                            <div class="row justify-content-between align-items-center mt-4">
+                                                <div class="col-4">
+                                                    <div class="row">
+                                                        <div class="col text-start">Report On</div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col text-start"><?= $row->created_at; ?></div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-4">
+                                                    <div class="row">
+                                                        <div class="col text-end">
+                                                            <?php if ($row->status == null) {
+                                                                echo "On Progress..";
+                                                            } elseif ($row->status == "Solved") {
+                                                                echo "Solved On";
+                                                            } else {
+                                                                echo "Declined On";
+                                                            } ?>
+                                                        </div>
+                                                    </div>
+                                                    <?php if ($row->status != null) : ?>
+                                                        <div class="row">
+                                                            <div class="col text-end"><?= $row->status_date; ?></div>
+                                                        </div>
+                                                    <?php endif; ?>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <!-- End Of Accordion Item -->
-                        <!-- Accordion Item-->
-                        <div class="accordion-item">
-                            <div class="accordion-header">
-                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#2" aria-expanded="true" aria-controls="2">
-                                    <div class="header-content">LSP+</div>
-                                    <div class="status">
-                                        <img src="/assets/User/img/remove.svg" alt="" />
-                                    </div>
-                                </button>
-                            </div>
-                            <div id="2" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-                                <div class="accordion-body">
-                                    <div class="row justify-content-center mt-4">
-                                        <div class="col-6 text-center">
-                                            Ada Kendala pada jaringan AirLis databasenya ada
-                                            beberapa yang tidak bisa di akses
-                                        </div>
-                                        <div class="row justify-content-between align-items-center mt-4">
-                                            <div class="col-4">
-                                                <div class="row">
-                                                    <div class="col text-start">Report On</div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col text-start">23/6/2022</div>
-                                                </div>
-                                            </div>
-                                            <div class="col-4">
-                                                <div class="row">
-                                                    <div class="col text-end">Declined On</div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col text-end">24/6/2023</div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- End Of Accordion Item -->
-                        <!-- Accordion Item-->
-                        <div class="accordion-item">
-                            <div class="accordion-header">
-                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#3" aria-expanded="true" aria-controls="3">
-                                    <div class="header-content">PLN Marketplace</div>
-                                    <div class="status">
-                                        <img src="/assets/User/img/checklist.svg" alt="" />
-                                    </div>
-                                </button>
-                            </div>
-                            <div id="3" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-                                <div class="accordion-body">
-                                    <div class="row justify-content-center mt-4">
-                                        <div class="col-6 text-center">
-                                            Ada Kendala pada jaringan AirLis databasenya ada
-                                            beberapa yang tidak bisa di akses
-                                        </div>
-                                        <div class="row justify-content-between align-items-center mt-4">
-                                            <div class="col-4">
-                                                <div class="row">
-                                                    <div class="col text-start">Report On</div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col text-start">23/6/2022</div>
-                                                </div>
-                                            </div>
-                                            <div class="col-4">
-                                                <div class="row">
-                                                    <div class="col text-end">Resolved On</div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col text-end">24/6/2023</div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- End Of Accordion Item -->
+                            <!-- End Of Accordion Item -->
+                        <?php endforeach; ?>
                     </div>
                 </div>
             </div>
+
+            <!-- kalau data History lebih dari 5 buatkan pagination -->
+            <?php if ($totalHistory > 5) : ?>
+                <div class="pagercontainer">
+                    <div>
+                        <?= $pager ?>
+                    </div>
+                </div>
+            <?php endif; ?>
+
+            <!-- kalau data History kosong tampilkan pesan tidak ada history -->
+            <?php if ($history == null) : ?>
+                <div class="row mt-4">
+                    <div class="col text-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" fill="currentColor" class="bi bi-envelope-dash" viewBox="0 0 16 16">
+                            <path d="M2 2a2 2 0 0 0-2 2v8.01A2 2 0 0 0 2 14h5.5a.5.5 0 0 0 0-1H2a1 1 0 0 1-.966-.741l5.64-3.471L8 9.583l7-4.2V8.5a.5.5 0 0 0 1 0V4a2 2 0 0 0-2-2H2Zm3.708 6.208L1 11.105V5.383l4.708 2.825ZM1 4.217V4a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v.217l-7 4.2-7-4.2Z" />
+                            <path d="M16 12.5a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Zm-5.5 0a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 0-1h-3a.5.5 0 0 0-.5.5Z" />
+                        </svg>
+                        <h3 class="pesanhistory">Tidak ada history report</h3>
+                    </div>
+                </div>
+            <?php endif; ?>
         </div>
     </div>
 

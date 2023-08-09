@@ -5,3 +5,10 @@
     font-weight: 900;
     font-style: italic;
 }
+
+.pagercontainer{
+    width:100%;
+    display: flex;
+    justify-content:end;
+    margin-top:50px;
+}

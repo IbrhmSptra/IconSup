@@ -5,10 +5,6 @@
     --secondary : #90B4CE;
     --subsecondary : #D8EEFE;
 }
-.colored-toast.swal2-icon-success {
-  background-color: var(--highlight) !important;
-  color: white !important;
-}
 
 * {
     font-family:'Poppins',sans-serif;
@@ -147,6 +143,10 @@ body{
     background-color: var(--subsecondary);
 
 }
+.colored-toast.swal2-icon-success {
+    background-color: var(--highlight) !important;
+    color: white !important;
+  }
 .report h1{
     color: var(--headline);
     font-weight: 700;
@@ -195,7 +195,17 @@ body{
     flex-direction: column;
     justify-content: space-between;
 }
+.pesanhistory{
+    color: var(--headline);
+    margin-top:10px;
+}
 
+.pagercontainer{
+    width:100%;
+    display: flex;
+    justify-content:center;
+    margin-top:70px;
+}
 h1{
     color: var(--headline);
     font-weight: 700;
