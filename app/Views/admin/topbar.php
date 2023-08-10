@@ -13,47 +13,27 @@
             <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i class="fas fa-bell fa-fw"></i>
                 <!-- Counter - Alerts -->
-                <span class="badge badge-danger badge-counter">3+</span>
+                <span class="badge badge-danger badge-counter"><?= $totalnotif ?></span>
             </a>
             <!-- Dropdown - Alerts -->
             <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
                 <h6 class="dropdown-header">
                     Reports Notification
                 </h6>
-                <a class="dropdown-item d-flex align-items-center" href="#">
-                    <div class="mr-3">
-                        <div class="icon-circle bg-primary">
-                            <i class=" fas fa-solid fa-bullhorn" style="color: #ffffff;"></i>
+                <?php foreach ($notif as $row) : ?>
+                    <a class="dropdown-item d-flex align-items-center" href="/reportspending/<?= $row->id ?>">
+                        <div class="mr-3">
+                            <div class="icon-circle bg-primary">
+                                <i class=" fas fa-solid fa-bullhorn" style="color: #ffffff;"></i>
+                            </div>
                         </div>
-                    </div>
-                    <div>
-                        <div class="small text-gray-500">December 12, 2019</div>
-                        <div><span class="font-weight-bold">Airlis</span> - High</div>
-                    </div>
-                </a>
-                <a class="dropdown-item d-flex align-items-center" href="#">
-                    <div class="mr-3">
-                        <div class="icon-circle bg-primary">
-                            <i class=" fas fa-solid fa-bullhorn" style="color: #ffffff;"></i>
+                        <div>
+                            <div class="small text-gray-500"><?= date("j F Y, H:i:s", strtotime($row->created_at)); ?></div>
+                            <div><span class="font-weight-bold"><?= $row->service_name; ?></span> - <?= $row->urgency ?></div>
                         </div>
-                    </div>
-                    <div>
-                        <div class="small text-gray-500">December 12, 2019</div>
-                        <div><span class="font-weight-bold">AirCRM</span> - Low</div>
-                    </div>
-                </a>
-                <a class="dropdown-item d-flex align-items-center" href="#">
-                    <div class="mr-3">
-                        <div class="icon-circle bg-primary">
-                            <i class=" fas fa-solid fa-bullhorn" style="color: #ffffff;"></i>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="small text-gray-500">December 12, 2019</div>
-                        <div><span class="font-weight-bold">PLN Marketplace</span> - Medium</div>
-                    </div>
-                </a>
-                <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
+                    </a>
+                <?php endforeach; ?>
+                <a class="dropdown-item text-center small text-gray-500" href="/reportspending">Show All Reports Pending</a>
             </div>
         </li>
 
@@ -67,7 +47,7 @@
             </a>
             <!-- Dropdown - User Information -->
             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                <a class="dropdown-item" href="#">
+                <a class="dropdown-item" href="/usermanagement">
                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                     Profile
                 </a>

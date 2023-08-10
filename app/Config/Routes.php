@@ -29,11 +29,16 @@ $routes->set404Override();
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
+
+//User
 $routes->get('/', 'Home::index');
 $routes->get('/history', 'User\History::index');
 $routes->get('/about', 'User\About::index');
 $routes->post('/submit', 'User\Report::create');
+
+//Reports (Admin)
 $routes->get('/reportspending', 'Admin\Reports::reportsPending');
+$routes->get('/reportspending/(:segment)', 'Admin\Reports::reportsNotif/$1');
 $routes->post('/reportspending', 'Admin\Reports::reportsPending');
 $routes->get('/solved/(:segment)', 'Admin\Reports::updateSolved/$1');
 $routes->get('/declined/(:segment)', 'Admin\Reports::updateDeclined/$1');
@@ -41,6 +46,12 @@ $routes->get('/reportssolved', 'Admin\Reports::reportsSolved');
 $routes->post('/reportssolved', 'Admin\Reports::reportsSolved');
 $routes->get('/reportsdeclined', 'Admin\Reports::reportsDeclined');
 $routes->post('/reportsdeclined', 'Admin\Reports::reportsDeclined');
+
+//User Management (Admin)
+$routes->get('/usermanagement', 'Admin\UserManagement::index');
+$routes->post('/usermanagement', 'Admin\UserManagement::index');
+$routes->get('/promote/(:segment)', 'Admin\UserManagement::promote/$1');
+$routes->get('/delete/(:segment)', 'Admin\UserManagement::delete/$1');
 
 /*
  * --------------------------------------------------------------------

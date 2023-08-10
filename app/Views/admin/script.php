@@ -14,9 +14,11 @@
  <!-- Page level custom scripts -->
  <script src="/assets/Admin/js/demo/chart-area-demo.js"></script>
  <script src="/assets/Admin/js/demo/chart-pie-demo.js"></script>
- <!-- my js -->
+
+ <!-- ---------------------------------------Modal Js------------------------------------------------- -->
  <script>
      $(document).ready(function() {
+         // Modal Untuk Action Reports Pending (Admin)
          $('#confirmresolve').on('show.bs.modal', function(event) {
              var button = $(event.relatedTarget); // Button that triggered the modal
              var id = button.data('id'); // Extract ID from data-id attribute
@@ -30,8 +32,73 @@
              var modal = $(this);
              modal.find('.modal-footer a').attr('href', '/declined/' + id);
          });
+
+
+         //  Modal Untuk Action User Management (Admin)
+         $('#confirmpromote').on('show.bs.modal', function(event) {
+             var button = $(event.relatedTarget); // Button that triggered the modal
+             var id = button.data('id'); // Extract ID from data-id attribute
+             var modal = $(this);
+             modal.find('.modal-footer a').attr('href', '/promote/' + id);
+         });
+
+         $('#confirmdelete').on('show.bs.modal', function(event) {
+             var button = $(event.relatedTarget); // Button that triggered the modal
+             var id = button.data('id'); // Extract ID from data-id attribute
+             var modal = $(this);
+             modal.find('.modal-footer a').attr('href', '/delete/' + id);
+         });
      });
  </script>
+
+
+ <!-- ----------------------------------Toast JS------------------------------------- -->
+
+ <!-- User Management Action Toast-->
+ <?php if (session()->getFlashData('promote')) { ?>
+     <script>
+         $(document).ready(function() {
+
+             // Menampilkan toast saat halaman dimuat
+             $("#infopromote").toast({
+                 autohide: false // Mencegah toast menghilang secara otomatis
+             }).toast("show");
+
+             // Menunda penyembunyian toast selama 5 detik
+             setTimeout(function() {
+                 $("#infopromote").toast("hide");
+             }, 5000);
+
+             $("#closeToastBtn").on("click", function() {
+                 $("#infopromote").toast("hide");
+             });
+         });
+     </script>
+ <?php } ?>
+
+ <?php if (session()->getFlashData('delete')) { ?>
+     <script>
+         $(document).ready(function() {
+
+             // Menampilkan toast saat halaman dimuat
+             $("#infodelete").toast({
+                 autohide: false // Mencegah toast menghilang secara otomatis
+             }).toast("show");
+
+             // Menunda penyembunyian toast selama 5 detik
+             setTimeout(function() {
+                 $("#infodelete").toast("hide");
+             }, 5000);
+
+             $("#closeToastBtn").on("click", function() {
+                 $("#infodelete").toast("hide");
+             });
+         });
+     </script>
+ <?php } ?>
+
+
+ <!-- Reports Pending Action Toast-->
  <?php if (session()->getFlashData('solved')) { ?>
      <script>
          $(document).ready(function() {

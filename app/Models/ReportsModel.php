@@ -72,8 +72,48 @@ class ReportsModel extends Model
 
 
 
+    //-------------------------------- CUSTOM QUERY REPORTS PENDING TOPBAR NOTIF----------------------------------------------------------
+    public function reportnotif()
+    {
+        $this->db->connect();
+        $builder = $this->db->table('reports');
+        $data = $builder
+            ->select('services.name as service_name, reports.id, reports.urgency, reports.created_at')
+            ->where('reports.urgency IS NOT NULL AND reports.status IS NULL')
+            ->join('users', 'users.id = reports.id_user')
+            ->join('services', 'services.id = reports.id_services')
+            ->orderBy('reports.created_at', 'DESC') //urut berdasasrkan terlama
+            ->get(3)
+            ->getResult();
+        $total = $builder->where('reports.urgency IS NOT NULL AND reports.status IS NULL')->countAllResults();
+        return [
+            'data' => $data,
+            'totalData' => $total,
+        ];
+    }
+    // -------------------------------- end of QUERY REPORTS PENDING TOPBAR NOTIF-----------------------------------------------
+
+
+
+
 
     //-------------------------------- CUSTOM QUERY REPORTS PENDING ----------------------------------------------------------
+    public function reportpendingNotif($id)
+    {
+        $this->db->connect();
+        $builder = $this->db->table('reports');
+        $data = $builder
+            ->where('reports.id', $id)
+            ->select('users.id as user_id, users.username, services.name as service_name, reports.id, reports.status, reports.pesan, reports.urgency, reports.created_at')
+            ->join('users', 'users.id = reports.id_user')
+            ->join('services', 'services.id = reports.id_services')
+            ->get()
+            ->getResult();
+
+        return [
+            'data' => $data,
+        ];
+    }
     public function reportpending($perPage)
     {
         $pager = service('pager');
@@ -107,19 +147,21 @@ class ReportsModel extends Model
         $offset = ($page - 1) * $perPage;
         $builder = $this->db->table('reports');
         $data = $builder
-            ->where('reports.urgency IS NOT NULL AND reports.status IS NULL')
             ->select('users.id as user_id, users.username, services.name as service_name, reports.id, reports.status, reports.pesan, reports.urgency, reports.created_at')
             ->join('users', 'users.id = reports.id_user')
             ->join('services', 'services.id = reports.id_services')
             ->orderBy('(CASE reports.urgency WHEN "High" THEN 1 WHEN "Medium" THEN 2 ELSE 3 END)', 'ASC')
             ->orderBy('reports.created_at', 'ASC')
             //search parameter
+            ->groupStart()
             ->like('services.name', $search)
             ->orLike('urgency', $search)
             ->orLike('pesan', $search)
             ->orLike('reports.created_at', $search)
             ->orLike('username', $search)
             ->orLike('users.id', $search)
+            ->groupEnd()
+            ->where('reports.urgency IS NOT NULL AND reports.status IS NULL')
             ->get($perPage, $offset)
             ->getResult();
 
@@ -171,11 +213,11 @@ class ReportsModel extends Model
         $builder = $this->db->table('reports');
         $data = $builder
             ->select('users.id as user_id, users.username, services.name as service_name, reports.id, reports.pesan, reports.urgency, reports.created_at, reports.status_date as solved_on')
-            ->where('reports.urgency IS NOT NULL AND reports.status = "Solved"')
             ->join('users', 'users.id = reports.id_user')
             ->join('services', 'services.id = reports.id_services')
             ->orderBy('solved_on', 'DESC')
             //search parameter
+            ->groupStart()
             ->like('services.name', $search)
             ->orLike('urgency', $search)
             ->orLike('reports.created_at', $search)
@@ -183,6 +225,8 @@ class ReportsModel extends Model
             ->orLike('username', $search)
             ->orLike('users.id', $search)
             ->orLike('pesan', $search)
+            ->groupEnd()
+            ->where('reports.urgency IS NOT NULL AND reports.status = "Solved"')
             ->get($perPage, $offset)
             ->getResult();
 
@@ -233,11 +277,11 @@ class ReportsModel extends Model
         $builder = $this->db->table('reports');
         $data = $builder
             ->select('users.id as user_id, users.username, services.name as service_name, reports.id, reports.pesan, reports.urgency, reports.created_at, reports.status_date as declined_on')
-            ->where('reports.urgency IS NOT NULL AND reports.status = "Declined"')
             ->join('users', 'users.id = reports.id_user')
             ->join('services', 'services.id = reports.id_services')
             ->orderBy('declined_on', 'DESC')
             //search parameter
+            ->groupStart()
             ->like('services.name', $search)
             ->orLike('urgency', $search)
             ->orLike('reports.created_at', $search)
@@ -245,6 +289,8 @@ class ReportsModel extends Model
             ->orLike('username', $search)
             ->orLike('users.id', $search)
             ->orLike('pesan', $search)
+            ->groupStart()
+            ->where('reports.urgency IS NOT NULL AND reports.status = "Declined"')
             ->get($perPage, $offset)
             ->getResult();
 

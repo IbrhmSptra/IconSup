@@ -48,8 +48,8 @@
                     <td><?= $row->pesan; ?></td>
                     <td><?= $row->service_name; ?></td>
                     <td><?= $row->urgency; ?></td>
-                    <td><?= $row->created_at; ?></td>
-                    <td><?= $row->declined_on; ?></td>
+                    <td><?= date("d-m-Y H:i:s", strtotime($row->created_at)); ?></td>
+                    <td><?= date("d-m-Y H:i:s", strtotime($row->declined_on)); ?></td>
                 </tr>
 
 

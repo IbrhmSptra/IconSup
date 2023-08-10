@@ -9,9 +9,29 @@ class Reports extends BaseController
 {
 
     //------------------------------------- Pending Reports ---------------------------------------------------
+    public function reportsNotif($id = null)
+    {
+        $reportsModel = new ReportsModel();
+        //reports select where id from notif
+        $reportsData = $reportsModel->reportpendingNotif($id);
+        //data untuk notif report pada topbar
+        $notifreports = $reportsModel->reportnotif();
+        $data = [
+            'reports' => $reportsData['data'],
+            'pager' => "",
+            'currentpage' => 1,
+            'totalReports' => $notifreports['totalData'],
+            'totalnotif' => $notifreports['totalData'],
+            'notif' => $notifreports['data'],
+        ];
+        return view('/admin/content/reportspending', $data);
+    }
     public function reportsPending()
     {
         $reportsModel = new ReportsModel();
+        //data untuk notif report pada topbar
+        $notifreports = $reportsModel->reportnotif();
+
         //pagination
         $perPage = 10;
         //dapatkan var get dari page untuk penomoran table didalam pagination
@@ -28,7 +48,9 @@ class Reports extends BaseController
             'reports' => $reportData['data'],
             'pager' => $reportData['pager'],
             'currentpage' => $currentpage,
-            'totalReports' => $reportData['totalData']
+            'totalReports' => $reportData['totalData'],
+            'totalnotif' => $notifreports['totalData'],
+            "notif" => $notifreports['data'],
         ];
 
         return view('/admin/content/reportspending', $data);
@@ -64,6 +86,9 @@ class Reports extends BaseController
     public function reportsSolved()
     {
         $reportsModel = new ReportsModel();
+        //data untuk notif report pada topbar
+        $notifreports = $reportsModel->reportnotif();
+
         //pagination
         $perPage = 10;
         //dapatkan var get dari page untuk penomoran table
@@ -79,7 +104,9 @@ class Reports extends BaseController
             'reports' => $reportData['data'],
             'pager' => $reportData['pager'],
             'currentpage' => $currentpage,
-            'totalReports' => $reportData['totalData']
+            'totalReports' => $reportData['totalData'],
+            'totalnotif' => $notifreports['totalData'],
+            'notif' => $notifreports['data'],
         ];
 
         return view('/admin/content/reportssolved', $data);
@@ -92,6 +119,9 @@ class Reports extends BaseController
     public function reportsDeclined()
     {
         $reportsModel = new ReportsModel();
+        //data untuk notif report pada topbar
+        $notifreports = $reportsModel->reportnotif();
+
         //pagination
         $perPage = 10;
         //dapatkan var get dari page untuk penomoran table
@@ -109,7 +139,9 @@ class Reports extends BaseController
             'reports' => $reportData['data'],
             'pager' => $reportData['pager'],
             'currentpage' => $currentpage,
-            'totalReports' => $reportData['totalData']
+            'totalReports' => $reportData['totalData'],
+            'totalnotif' => $notifreports['totalData'],
+            'notif' => $notifreports['data'],
         ];
 
         return view('/admin/content/reportsdeclined', $data);

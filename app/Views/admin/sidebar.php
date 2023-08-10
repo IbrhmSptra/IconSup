@@ -26,6 +26,13 @@
         Admin Management
     </div>
 
+    <!-- Nav Item - User -->
+    <li class="nav-item active">
+        <a class="nav-link" href="/usermanagement">
+            <i class="fas fa-solid fa-user" style="color: #ffffff;"></i>
+            <span>User</span></a>
+    </li>
+
     <!-- Nav Item - Report -->
     <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
@@ -40,13 +47,6 @@
                 <a class="collapse-item" href="/reportsdeclined">Declined</a>
             </div>
         </div>
-    </li>
-
-    <!-- Nav Item - User -->
-    <li class="nav-item active">
-        <a class="nav-link" href="index.html">
-            <i class="fas fa-solid fa-user" style="color: #ffffff;"></i>
-            <span>User</span></a>
     </li>
 
     <!-- Divider -->
