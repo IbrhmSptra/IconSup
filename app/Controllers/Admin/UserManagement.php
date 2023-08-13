@@ -6,6 +6,7 @@ use App\Controllers\BaseController;
 use Myth\Auth\Models\GroupModel as ModelsGroupModel;
 use Myth\Auth\Models\UserModel;
 use App\Models\ReportsModel;
+use Myth\Auth\Test\Fakers\UserFaker;
 
 class UserManagement extends BaseController
 {
@@ -19,7 +20,7 @@ class UserManagement extends BaseController
         //get User with model myth/auth
         $usermodel = new UserModel();
         //pagination
-        $perPage = 10;
+        $perPage = 20;
         //dapatkan var get dari page untuk penomoran table didalam pagination
         $currentpage = $this->request->getVar('page') ? $this->request->getVar('page') : 1; //klo page ada angkanya maka isi dengan angka tersebut klo ga ada berarti pagenya 1
         //search logic
@@ -57,6 +58,10 @@ class UserManagement extends BaseController
         $session = \Config\Services::session();
         //get model from myth/auth
         $UserModel = new UserModel();
+        if ($id == user_id()) {
+            $UserModel->delete($id);
+            return redirect()->to('/logout');
+        }
         $UserModel->delete($id);
         $session->setFlashdata('delete', 'berhasil');
         return redirect()->to('/usermanagement');

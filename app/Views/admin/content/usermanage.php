@@ -38,10 +38,10 @@
             </tr>
         </thead>
         <tbody class="table-group-divider">
-            <?php $i = 1 ?>
+            <?php $no = 1 + (20 * ($currentpage - 1)) ?>
             <?php foreach ($akun as $row) : ?>
                 <tr class="text-center">
-                    <th scope="row"><?= $i++ ?></th>
+                    <th scope="row"><?= $no++ ?></th>
                     <td><?= $row->user_id; ?></td>
                     <td><?= $row->username; ?></td>
                     <td><?= $row->email; ?></td>
@@ -71,7 +71,7 @@
     </table>
 
     <!-- Kalau total reports lebih dari 10 buatkan pagination -->
-    <?php if ($totalAkun > 10) : ?>
+    <?php if ($totalAkun > 20) : ?>
         <div class="pagercontainer">
             <div>
                 <?= $pager ?>
@@ -130,7 +130,7 @@
     <!-- End Of decline Modal -->
 
     <!-- Toast container Resolve-->
-    <div style="position: absolute; bottom: 1rem; right: 1rem;">
+    <div style="position: absolute; top: 5%; right: 1rem;">
         <div id="infopromote" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
             <div class="toast-header bg-info text-white">
                 <img class="badgetoast" src="/assets/Admin/img/accept.png" style="width:16px; height:16; " alt="solved">
@@ -142,7 +142,7 @@
     </div>
 
     <!-- Toast container Decline-->
-    <div style="position: absolute; bottom: 1rem; right: 1rem;">
+    <div style="position: absolute; top: 5%; right: 1rem;">
         <div id="infodelete" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
             <div class="toast-header bg-info text-white">
                 <img class="badgetoast" src="/assets/Admin/img/accept.png" style="width:16px; height:16; " alt="solved">

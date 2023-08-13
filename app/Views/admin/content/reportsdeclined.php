@@ -39,7 +39,7 @@
             </tr>
         </thead>
         <tbody class="table-group-divider">
-            <?php $no = 1 + (5 * ($currentpage - 1)) ?>
+            <?php $no = 1 + (20 * ($currentpage - 1)) ?>
             <?php foreach ($reports as $row) : ?>
                 <tr class="text-center">
                     <th scope="row"><?= $no++ ?></th>
@@ -49,7 +49,14 @@
                     <td><?= $row->service_name; ?></td>
                     <td><?= $row->urgency; ?></td>
                     <td><?= date("d-m-Y H:i:s", strtotime($row->created_at)); ?></td>
-                    <td><?= date("d-m-Y H:i:s", strtotime($row->declined_on)); ?></td>
+                    <td><?php
+                        if ($row->declined_on == NULL) {
+                            echo "Dummy";
+                        } else {
+                            echo date("d-m-Y H:i:s", strtotime($row->declined_on));
+                        }
+                        ?>
+                    </td>
                 </tr>
 
 
@@ -58,7 +65,7 @@
     </table>
 
     <!-- Kalau total reports lebih dari 10 buatkan pagination -->
-    <?php if ($totalReports > 10) : ?>
+    <?php if ($totalReports > 20) : ?>
         <div class="pagercontainer">
             <div>
                 <?= $pager ?>

@@ -53,6 +53,15 @@ $routes->post('/usermanagement', 'Admin\UserManagement::index');
 $routes->get('/promote/(:segment)', 'Admin\UserManagement::promote/$1');
 $routes->get('/delete/(:segment)', 'Admin\UserManagement::delete/$1');
 
+//Service Management (Admin)
+$routes->get('/service', 'Admin\Service::index');
+$routes->post('/service', 'Admin\Service::index');
+$routes->get('/servicecreate', 'Admin\Service::servicecreate');
+$routes->get('/serviceedit/(:segment)', 'Admin\Service::serviceedit/$1');
+$routes->post('/create', 'Admin\Service::create');
+$routes->post('/update/(:segment)', 'Admin\Service::update/$1');
+$routes->get('/deleteservice/(:segment)', 'Admin\Service::delete/$1');
+
 /*
  * --------------------------------------------------------------------
  * Additional Routing

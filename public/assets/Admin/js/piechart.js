@@ -1,3 +1,13 @@
+console.log(piechartData)
+const labelpie = []
+const totalpie = []
+//isi array
+for (const item of piechartData) {
+  labelpie.push(item['urgency']); //ambil bagian bulan dan ubah dari string menjadi tipe date
+  totalpie.push(parseInt(item['total'])); //ambil bagian totalreports dan ubah menjadi int
+}
+console.log(labelpie)
+
 // Set new default font family and font color to mimic Bootstrap's default styling
 Chart.defaults.global.defaultFontFamily = 'Nunito', '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
 Chart.defaults.global.defaultFontColor = '#858796';
@@ -7,11 +17,11 @@ var ctx = document.getElementById("myPieChart");
 var myPieChart = new Chart(ctx, {
   type: 'doughnut',
   data: {
-    labels: ["Direct", "Referral", "Social"],
+    labels: labelpie,
     datasets: [{
-      data: [55, 30, 15],
-      backgroundColor: ['#4e73df', '#1cc88a', '#36b9cc'],
-      hoverBackgroundColor: ['#2e59d9', '#17a673', '#2c9faf'],
+      data: totalpie,
+      backgroundColor: ['#FF0000', '#4e73df', '#1cc88a'],
+      hoverBackgroundColor: ['#B10000', '#173DAC', '#05A36A'],
       hoverBorderColor: "rgba(234, 236, 244, 1)",
     }],
   },

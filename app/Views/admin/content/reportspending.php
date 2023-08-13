@@ -39,7 +39,7 @@
             </tr>
         </thead>
         <tbody class="table-group-divider">
-            <?php $no = 1 + (5 * ($currentpage - 1)) ?>
+            <?php $no = 1 + (20 * ($currentpage - 1)) ?>
             <?php foreach ($reports as $row) : ?>
                 <tr class="text-center">
                     <th scope="row"><?= $no++ ?></th>
@@ -69,7 +69,7 @@
     </table>
 
     <!-- Kalau total reports lebih dari 10 buatkan pagination -->
-    <?php if ($totalReports > 10) : ?>
+    <?php if ($totalReports > 20) : ?>
         <div class="pagercontainer">
             <div>
                 <?= $pager ?>
@@ -129,7 +129,7 @@
 
 
     <!-- Toast container Resolve-->
-    <div style="position: absolute; bottom: 1rem; right: 1rem;">
+    <div style="position: absolute; top: 5%; right: 1rem;">
         <div id="inforesolve" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
             <div class="toast-header bg-info text-white">
                 <img class="badgetoast" src="/assets/Admin/img/accept.png" style="width:16px; height:16; " alt="solved">
@@ -141,7 +141,7 @@
     </div>
 
     <!-- Toast container Decline-->
-    <div style="position: absolute; bottom: 1rem; right: 1rem;">
+    <div style="position: absolute; top: 5%; right: 1rem;">
         <div id="infodecline" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
             <div class="toast-header bg-info text-white">
                 <img class="badgetoast" src="/assets/Admin/img/accept.png" style="width:16px; height:16; " alt="solved">

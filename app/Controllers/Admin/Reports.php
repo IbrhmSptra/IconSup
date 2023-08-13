@@ -8,14 +8,18 @@ use App\Models\ReportsModel;
 class Reports extends BaseController
 {
 
-    //------------------------------------- Pending Reports ---------------------------------------------------
+    //------------------------------------- show pending reports from notification when admin click ---------------------------------------------------
     public function reportsNotif($id = null)
     {
+        //Notif Reports Top Bar ==========
         $reportsModel = new ReportsModel();
-        //reports select where id from notif
-        $reportsData = $reportsModel->reportpendingNotif($id);
         //data untuk notif report pada topbar
         $notifreports = $reportsModel->reportnotif();
+
+
+        //reports pending select where id notif=============
+        $reportsData = $reportsModel->reportpendingNotif($id);
+
         $data = [
             'reports' => $reportsData['data'],
             'pager' => "",
@@ -26,16 +30,21 @@ class Reports extends BaseController
         ];
         return view('/admin/content/reportspending', $data);
     }
+
+
+    // ------------------------------------------------- Show reports pending --------------------------------------------------
     public function reportsPending()
     {
+        // --------------------------  Notif Reports Topbar --------------------------------------
         $reportsModel = new ReportsModel();
-        //data untuk notif report pada topbar
         $notifreports = $reportsModel->reportnotif();
+        // ---------------------------------------------------------------------------------------
 
         //pagination
-        $perPage = 10;
+        $perPage = 20;
         //dapatkan var get dari page untuk penomoran table didalam pagination
         $currentpage = $this->request->getVar('page') ? $this->request->getVar('page') : 1; //klo page ada angkanya maka isi dengan angka tersebut klo ga ada berarti pagenya 1
+
         //search logic
         $keyword = $this->request->getVar('search');
         if ($keyword) {
@@ -45,12 +54,15 @@ class Reports extends BaseController
         }
 
         $data = [
+            'totalnotif' => $notifreports['totalData'],
+            "notif" => $notifreports['data'],
+            //------------------------------------
+
             'reports' => $reportData['data'],
             'pager' => $reportData['pager'],
             'currentpage' => $currentpage,
             'totalReports' => $reportData['totalData'],
-            'totalnotif' => $notifreports['totalData'],
-            "notif" => $notifreports['data'],
+
         ];
 
         return view('/admin/content/reportspending', $data);
@@ -85,12 +97,13 @@ class Reports extends BaseController
     //------------------------------------- Resolved Reports ---------------------------------------------------
     public function reportsSolved()
     {
+        // --------------------------  Notif Reports Topbar --------------------------------------
         $reportsModel = new ReportsModel();
-        //data untuk notif report pada topbar
         $notifreports = $reportsModel->reportnotif();
+        // ---------------------------------------------------------------------------------------
 
         //pagination
-        $perPage = 10;
+        $perPage = 20;
         //dapatkan var get dari page untuk penomoran table
         $currentpage = $this->request->getVar('page') ? $this->request->getVar('page') : 1; //klo page ada angkanya maka isi dengan angka tersebut klo ga ada berarti pagenya 1
         //search logic
@@ -118,12 +131,14 @@ class Reports extends BaseController
     //------------------------------------- Declined Reports ---------------------------------------------------
     public function reportsDeclined()
     {
+        // --------------------------  Notif Reports Topbar --------------------------------------
         $reportsModel = new ReportsModel();
-        //data untuk notif report pada topbar
         $notifreports = $reportsModel->reportnotif();
+        //----------------------------------------------------------------------------------------
+
 
         //pagination
-        $perPage = 10;
+        $perPage = 20;
         //dapatkan var get dari page untuk penomoran table
         $currentpage = $this->request->getVar('page') ? $this->request->getVar('page') : 1; //klo page ada angkanya maka isi dengan angka tersebut klo ga ada berarti pagenya 1
 

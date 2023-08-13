@@ -69,6 +69,52 @@ class ReportsModel extends Model
 
 
 
+    // -------------------------------- CUSTOM QUERY DASHBOARD (ADMIN) -----------------------------------------------
+    public function dashboardModel()
+    {
+        $this->db->connect();
+        $builder = $this->db->table('reports');
+        $linechartdata = $builder
+            ->select("DATE_FORMAT(created_at, '%Y-%m') AS bulan, COUNT(*) AS totalreports")
+            ->where("created_at >= DATE_SUB(CURDATE(), INTERVAL 12 MONTH)")
+            ->groupBy("bulan")
+            ->orderBy("created_at", "ASC")
+            ->get()
+            ->getResult();
+
+        $piechartdata = $builder
+            ->select("urgency ,COUNT(urgency) as total")
+            ->where("urgency IS NOT NULL")
+            ->groupBy("urgency")
+            ->get()
+            ->getResult();
+
+        $barchartdata = $builder
+            ->select("services.name as service, COUNT(id_services) as total")
+            ->where("urgency IS NOT NULL")
+            ->join("services", "services.id = reports.id_services")
+            ->groupBy("service")
+            ->orderBy("total", "DESC")
+            ->get(limit: 5)
+            ->getResult();
+
+        $totalreports = $builder->where("urgency IS NOT NULL")->countAllResults();
+        $totalsolved = $builder->where('status = "Solved"')->countAllResults();
+        $totaldeclined = $builder->where('status = "Declined"')->countAllResults();
+        $totalpending = $builder->where('status IS NULL')->countAllResults();
+
+        return [
+            "linechartdata" => $linechartdata,
+            "totalreports" => $totalreports,
+            "totalsolved" => $totalsolved,
+            "totaldeclined" => $totaldeclined,
+            "totalpending" => $totalpending,
+            "piechartdata" => $piechartdata,
+            "barchartdata" => $barchartdata,
+        ];
+    }
+
+    // -------------------------------- end of CUSTOM QUERY DASHBOARD (ADMIN) -----------------------------------------------
 
 
 
