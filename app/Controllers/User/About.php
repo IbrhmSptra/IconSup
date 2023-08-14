@@ -16,7 +16,8 @@ class About extends BaseController
                 ];
                 return view('/user/content/about', $data);
             } else {
-                throw new \Exception("Kamu tidak bisa akses halaman ini");
+                //berarti dia admin
+                return redirect()->to('/');
             }
         } else {
             $data = [

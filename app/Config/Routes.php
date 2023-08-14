@@ -34,33 +34,33 @@ $routes->set404Override();
 $routes->get('/', 'Home::index');
 $routes->get('/history', 'User\History::index');
 $routes->get('/about', 'User\About::index');
-$routes->post('/submit', 'User\Report::create');
+$routes->post('/submit', 'User\Report::create', ['filter' => 'role:User']);
 
 //Reports (Admin)
-$routes->get('/reportspending', 'Admin\Reports::reportsPending');
-$routes->get('/reportspending/(:segment)', 'Admin\Reports::reportsNotif/$1');
-$routes->post('/reportspending', 'Admin\Reports::reportsPending');
-$routes->get('/solved/(:segment)', 'Admin\Reports::updateSolved/$1');
-$routes->get('/declined/(:segment)', 'Admin\Reports::updateDeclined/$1');
-$routes->get('/reportssolved', 'Admin\Reports::reportsSolved');
-$routes->post('/reportssolved', 'Admin\Reports::reportsSolved');
-$routes->get('/reportsdeclined', 'Admin\Reports::reportsDeclined');
-$routes->post('/reportsdeclined', 'Admin\Reports::reportsDeclined');
+$routes->get('/reportspending', 'Admin\Reports::reportsPending', ['filter' => 'role:Admin']);
+$routes->get('/reportspending/(:segment)', 'Admin\Reports::reportsNotif/$1', ['filter' => 'role:Admin']);
+$routes->post('/reportspending', 'Admin\Reports::reportsPending', ['filter' => 'role:Admin']);
+$routes->get('/solved/(:segment)', 'Admin\Reports::updateSolved/$1', ['filter' => 'role:Admin']);
+$routes->get('/declined/(:segment)', 'Admin\Reports::updateDeclined/$1', ['filter' => 'role:Admin']);
+$routes->get('/reportssolved', 'Admin\Reports::reportsSolved', ['filter' => 'role:Admin']);
+$routes->post('/reportssolved', 'Admin\Reports::reportsSolved', ['filter' => 'role:Admin']);
+$routes->get('/reportsdeclined', 'Admin\Reports::reportsDeclined', ['filter' => 'role:Admin']);
+$routes->post('/reportsdeclined', 'Admin\Reports::reportsDeclined', ['filter' => 'role:Admin']);
 
 //User Management (Admin)
-$routes->get('/usermanagement', 'Admin\UserManagement::index');
-$routes->post('/usermanagement', 'Admin\UserManagement::index');
-$routes->get('/promote/(:segment)', 'Admin\UserManagement::promote/$1');
-$routes->get('/delete/(:segment)', 'Admin\UserManagement::delete/$1');
+$routes->get('/usermanagement', 'Admin\UserManagement::index', ['filter' => 'role:Admin']);
+$routes->post('/usermanagement', 'Admin\UserManagement::index', ['filter' => 'role:Admin']);
+$routes->get('/promote/(:segment)', 'Admin\UserManagement::promote/$1', ['filter' => 'role:Admin']);
+$routes->get('/delete/(:segment)', 'Admin\UserManagement::delete/$1', ['filter' => 'role:Admin']);
 
 //Service Management (Admin)
-$routes->get('/service', 'Admin\Service::index');
-$routes->post('/service', 'Admin\Service::index');
-$routes->get('/servicecreate', 'Admin\Service::servicecreate');
-$routes->get('/serviceedit/(:segment)', 'Admin\Service::serviceedit/$1');
-$routes->post('/create', 'Admin\Service::create');
-$routes->post('/update/(:segment)', 'Admin\Service::update/$1');
-$routes->get('/deleteservice/(:segment)', 'Admin\Service::delete/$1');
+$routes->get('/service', 'Admin\Service::index', ['filter' => 'role:Admin']);
+$routes->post('/service', 'Admin\Service::index', ['filter' => 'role:Admin']);
+$routes->get('/servicecreate', 'Admin\Service::servicecreate', ['filter' => 'role:Admin']);
+$routes->get('/serviceedit/(:segment)', 'Admin\Service::serviceedit/$1', ['filter' => 'role:Admin']);
+$routes->post('/create', 'Admin\Service::create', ['filter' => 'role:Admin']);
+$routes->post('/update/(:segment)', 'Admin\Service::update/$1', ['filter' => 'role:Admin']);
+$routes->get('/deleteservice/(:segment)', 'Admin\Service::delete/$1', ['filter' => 'role:Admin']);
 
 /*
  * --------------------------------------------------------------------

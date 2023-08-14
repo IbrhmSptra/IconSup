@@ -11,10 +11,7 @@ class History extends BaseController
     {
         //ketika dia login melalui navbar history dan masuk sebagai admin
         if (in_groups('Admin')) {
-            $data = [
-                'title' => 'IconSup'
-            ];
-            return view('/admin/content/home', $data);
+            return redirect()->to('/');
         }
         // dia login sebagai user
         else {

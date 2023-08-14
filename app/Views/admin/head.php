@@ -5,6 +5,8 @@
 <meta name="author" content="">
 
 <title>Admin IconSup</title>
+<!-- Icon -->
+<link rel="icon" type="image/x-icon" href="/assets/User/img/logoAbout.svg">
 
 <!-- Custom fonts for this template-->
 <link href="/assets/Admin/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">

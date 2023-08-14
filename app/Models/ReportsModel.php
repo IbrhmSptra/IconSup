@@ -101,7 +101,7 @@ class ReportsModel extends Model
         $totalreports = $builder->where("urgency IS NOT NULL")->countAllResults();
         $totalsolved = $builder->where('status = "Solved"')->countAllResults();
         $totaldeclined = $builder->where('status = "Declined"')->countAllResults();
-        $totalpending = $builder->where('status IS NULL')->countAllResults();
+        $totalpending = $builder->where('status IS NULL AND urgency IS NOT NULL')->countAllResults();
 
         return [
             "linechartdata" => $linechartdata,
