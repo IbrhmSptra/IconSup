@@ -4,7 +4,7 @@
 Iconsup adalah portal atau pusat pengaduan kendala (Customer Service) untuk PT. IconPlus. Ditambah dengan adanya sebuah program klasifikasi urgensi menggunakan algoritma K-Nearest Neighbors yang terintegrasi dengan Iconsup membuat penanganan kendala oleh admin menjadi efisien dan tepat sasaran yang menjadikan admin dapat memprioritaskan tiket dengan urgensi high terlebih dahulu. Memiliki akurasi performa model KNN yaitu sebesar 96%. Dari segi monitoring Iconsup sudah dilengkapi dengan dashboard sehingga admin mendapatkan informasi visual dari keseluruhan data. Project ini merupakan hasil internship dengan PT.IconPLus
 
 
-![Logo](https://i.postimg.cc/VNRCNhKV/logoiconsup.png)
+![Logo](https://i.postimg.cc/NMNfhNg3/Group-9.png)
 
 
 ## Features
@@ -27,7 +27,8 @@ Iconsup adalah portal atau pusat pengaduan kendala (Customer Service) untuk PT. 
 
 ## Integration To Machine Learning
 
-![Integration To Machine Learning](https://i.postimg.cc/BbNfdt4M/Integration.png)
+![Integration To Machine Learning](https://i.postimg.cc/7hD1cZZs/integration-ML.jpg)
+
 ## Unified Modeling Language
 
 ![Unified Modeling Language](https://i.postimg.cc/FF6MJt1f/Iconsup-UML-Activity-Diagram-create-report-drawio.png)
