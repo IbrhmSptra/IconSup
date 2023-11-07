@@ -77,7 +77,7 @@ Iconsup adalah portal atau pusat pengaduan kendala (Customer Service) untuk PT. 
 - Developer : [IbrhmSptra](https://www.github.com/IbrhmSptra)
 - Design : [IbrhmSptra](https://www.github.com/IbrhmSptra)
 
-## Doucmentation
+## Documentation
 
 [IconSup](https://github.com/IbrhmSptra/IconSup/files/13276876/Makalah.-.Ibrahim.Saputra_compressed.pdf)
 
