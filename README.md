@@ -34,6 +34,7 @@ Iconsup adalah portal atau pusat pengaduan kendala (Customer Service) untuk PT. 
 ![Unified Modeling Language](https://i.postimg.cc/FF6MJt1f/Iconsup-UML-Activity-Diagram-create-report-drawio.png)
 
 ![Unified Modeling Language](https://i.postimg.cc/Bvwr5RNw/Iconsup-UML-Activity-diagram-ticket-handling-drawio.png)
+
 ## Screenshots User Page
 
 ### Login & Register
@@ -76,7 +77,10 @@ Iconsup adalah portal atau pusat pengaduan kendala (Customer Service) untuk PT. 
 - Developer : [IbrhmSptra](https://www.github.com/IbrhmSptra)
 - Design : [IbrhmSptra](https://www.github.com/IbrhmSptra)
 
+## Doucmentation
+
+[IconSup](https://github.com/IbrhmSptra/IconSup/files/13276876/Makalah.-.Ibrahim.Saputra_compressed.pdf)
 
 ## NOTE
 
-Website ini harus dijalankan dengan Machine Learning Program pada repository berikut : [IbrhmSptra](https://www.github.com/IbrhmSptra)
+Website ini harus dijalankan dengan Machine Learning Program pada repository berikut : [Machine Learning Classifier For IconSup](https://github.com/IbrhmSptra/UrgencyTicket)
